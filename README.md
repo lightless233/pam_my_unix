@@ -35,5 +35,5 @@
     ```
 - result
     When someone who is trying to auth via ssh, his username and password will log into a file.
-
+    ![result](https://raw.githubusercontent.com/LiGhT1EsS/pam_my_unix/master/doc/1.png)
 
