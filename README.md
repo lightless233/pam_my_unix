@@ -1,6 +1,18 @@
 # PAM_MY_UNIX
 
 ## How to use
+- Dependency resolution
+   ### CentOS
+    ``` sh
+    yum intall pam-devel
+    ```
+    
+   ### Ubuntu 
+    ``` sh
+    apt-get intall libpam-dev
+    ```
+    
+    
 - check password file path
     This module will put username/password to `/home/password.txt`, you can change it in `main.c`.
     Just edit `const char *log_filename = "/home/password.txt";` and compile this PAM module.
